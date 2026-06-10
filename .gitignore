@@ -1,4 +1,4 @@
 node_modules/
 #Environment variables
-
+#node modules should be ignored, but the .env file should be included in the repository
 .env
