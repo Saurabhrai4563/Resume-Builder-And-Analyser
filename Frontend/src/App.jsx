@@ -4,8 +4,9 @@ import { AuthProvider } from "./features/auth/auth.contex.jsx";
 function App() {
   return (
     <div>
-      <AuthProvider></AuthProvider>
-      <RouterProvider router={router} />
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
     </div>
   );
 }
