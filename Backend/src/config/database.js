@@ -1,15 +1,21 @@
 const dns = require("dns");
 
 dns.setServers(["8.8.8.8", "8.8.4.4"]);
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
-async function connectToDb() {
+const connectDB = async () => {
     try {
-        await mongoose.connect(process.env.MONGO_URI)
-        console.log("connected to database");
+        const connectionInstance = await mongoose.connect(
+            process.env.MONGODB_URI
+        );
+
+        console.log(
+            `MongoDB Connected: ${connectionInstance.connection.host}`
+        );
+    } catch (error) {
+        console.log("MongoDB connection failed:", error.message);
+        process.exit(1);
     }
-    catch (err) {
-        console.log(err);
-    }
-}
-module.exports = connectToDb
+};
+
+export default connectDB;
