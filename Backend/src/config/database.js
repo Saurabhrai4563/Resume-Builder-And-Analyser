@@ -1,12 +1,12 @@
 const dns = require("dns");
+const mongoose = require("mongoose");
 
 dns.setServers(["8.8.8.8", "8.8.4.4"]);
-import mongoose from "mongoose";
 
 const connectDB = async () => {
     try {
         const connectionInstance = await mongoose.connect(
-            process.env.MONGODB_URI
+            process.env.MONGO_URI
         );
 
         console.log(
@@ -18,4 +18,4 @@ const connectDB = async () => {
     }
 };
 
-export default connectDB;
+module.exports = connectDB;
