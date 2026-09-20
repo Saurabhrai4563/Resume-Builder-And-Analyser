@@ -1,4 +1,4 @@
-const pdfParse = require('pdf-parse');
+//const pdfParse = require('pdf-parse');
 const generateInterviewReport = require('../services/ai.service');
 const interviewReportModel = require("../models/interviewReport.model");
 
@@ -19,6 +19,7 @@ async function getInterviewQuestions(req, res) {
         let resumeText = "";
         if (req.file && req.file.buffer) {
             try {
+                const pdfParse = require("pdf-parse");
                 // Handle both pdf-parse v2 class structure and legacy function calls safely
                 if (typeof pdfParse.PDFParse === "function") {
                     const parser = new pdfParse.PDFParse(Uint8Array.from(req.file.buffer));
